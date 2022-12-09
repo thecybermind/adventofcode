@@ -1,15 +1,13 @@
-import pprint
+# import pprint
 
 # fs = {
-#   'subdirname': (size, { ... }),
-#   'filename': filesize,
-#   '#totalsize': 
+#   '<subdirname>': (size, { ... }),
+#   '<filename>': filesize,
+#   '#': dirsize,
+#   '.': dirname,
 # }
 fs = {'.': '/', '#': 0}
 pwd = []
-
-def pwd_str(pwdlist):
-    return '/' + '/'.join(pwdlist) + '/'
 
 def change_dir(dirname):
     global pwd
@@ -83,7 +81,8 @@ total_part1 = sum( size for _,size in sizes if size <= 100000 )
 print(f'Part 1 total: {total_part1}')
 
 # part 2
-
+# find smallest directory to delete that will provide enough space for an update
+# total drive size is 70000000, space needed is 30000000
 total_storage = 70000000
 space_used = fs['#']
 space_free = total_storage - space_used
