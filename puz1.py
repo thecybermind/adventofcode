@@ -9,10 +9,10 @@ with open('input1.txt') as inp:
         else:
             elftotal += int(line)
 
-maxelf = max(elves)
+elves.sort()
+
+maxelf = elves[-1]
 print(f'Top elf calories: {maxelf}')
 
-elves.sort()
 total = sum(elves[-3:])
-
 print(f'Total of top 3 calories: {total}')
