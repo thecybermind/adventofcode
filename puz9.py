@@ -7,7 +7,7 @@ with open('input9.txt') as inp:
         movements.append( (dir, count) )
 
 # part 2 increases number of segments to 10, but rules for moving towards previous segments are the same as part 1 head/tail rules
-def do_rope(movements, snake_len):
+def run_sim(movements, snake_len):
     tail_index = snake_len - 1
     # x/y coords for each segment... (x[0], y[0]) is head, (x[1], y[1]) is next segment, (x[tail_index], y[tail_index]) is final tail segment
     x = [0] * snake_len
@@ -72,8 +72,8 @@ def do_rope(movements, snake_len):
 
     return visited
 
-tail_visited_part1 = len(do_rope(movements, 2))
+tail_visited_part1 = len(run_sim(movements, 2))
 print(f'Part 1 # spaces tail visited: {tail_visited_part1}')
 
-tail_visited_part2 = len(do_rope(movements, 10))
+tail_visited_part2 = len(run_sim(movements, 10))
 print(f'Part 2 # spaces tail visited: {tail_visited_part2}')
