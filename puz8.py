@@ -68,13 +68,12 @@ total_visible = len(grid[0]) * 2
 # add in 2 (left edge and right edge) for every line in the grid not including the top and bottom
 total_visible += (len(grid) - 2) * 2
 
-scenic_scores = []
+max_scenic_score = 0
 # loop through all the non-edge locations
 for row in range(1, len(grid) - 1):
     for col in range(1, len(grid[0]) - 1):
         total_visible += is_visible(row, col)
-        scenic_scores.append(scenic_score(row, col))
+        max_scenic_score = max(max_scenic_score, scenic_score(row, col))
 
 print(f'Part 1 total visible: {total_visible}')
-max_scenic_score = max(scenic_scores)
 print(f'Part 2 max scenic score: {max_scenic_score}')
