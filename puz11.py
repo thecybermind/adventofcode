@@ -22,12 +22,12 @@ with open('input11.txt') as inp:
             monkey['items'] = [int(n.strip()) for n in line[16:].split(',')]
         elif line.startswith('Operation: '):
             op = line.split(' ')[4]
-            monkey['operation_operator'] = operator.mul if op == '*' else operator.add
+            monkey['operator'] = operator.mul if op == '*' else operator.add
             # None = use old            
             operand1 = line.split(' ')[3]
-            monkey['operation_operand1'] = None if operand1 == 'old' else int(operand1)
+            monkey['operand1'] = None if operand1 == 'old' else int(operand1)
             operand2 = line.split(' ')[5]
-            monkey['operation_operand2'] = None if operand2 == 'old' else int(operand2)
+            monkey['operand2'] = None if operand2 == 'old' else int(operand2)
         elif line.startswith('Test: '):
             monkey['test'] = int(line.split(' ')[3])
         elif line.startswith('If true: '):
@@ -62,9 +62,9 @@ def monkey_turn(monkeys, monkey_num, part2):
 
         # worry level operation
         # if stored value is None, then use existing value
-        operand1 = monkey['operation_operand1'] or worry
-        operand2 = monkey['operation_operand2'] or worry
-        op = monkey['operation_operator']
+        operand1 = monkey['operand1'] or worry
+        operand2 = monkey['operand2'] or worry
+        op = monkey['operator']
         worry = op(operand1, operand2)
 
         # bored
@@ -89,7 +89,9 @@ def get_monkey_business(monkeys):
     return inspects[-1] * inspects[-2]
 
 
+# make a copy of the list for part 2
 monkeys_part2 = copy.deepcopy(monkeys)
+
 for i in range(20):
     monkey_round(monkeys)
 part1 = get_monkey_business(monkeys)
