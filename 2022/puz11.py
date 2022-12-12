@@ -101,4 +101,3 @@ for i in range(10000):
     monkey_round(monkeys_part2, True)
 part2 = get_monkey_business(monkeys_part2)
 print(f'Part 2 monkey business: {part2}')
-
