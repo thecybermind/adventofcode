@@ -43,7 +43,7 @@ def make_grid(lines, part2=False):
         for point in points:
             set_grid_point(grid, point, '#')
 
-    # didn't feel like checking "invisible floor" logic in every condition of drop_sand() so let's just make an actual floor
+    # didn't feel like checking "infinite floor" logic in every condition of drop_sand() so let's just make an actual floor
     if part2:
         floor_y = max(grid) + 2
         for x in range(-10000,10000):
